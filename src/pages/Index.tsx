@@ -5,7 +5,7 @@ import { Button } from "@/components/ui/button";
 const Index = () => {
   return (
     <div className="min-h-screen flex flex-col">
-      <nav className="w-full p-4 flex justify-end">
+      <nav className="w-full p-4 flex justify-end topnav">
         <a
           href="https://www.linkedin.com/in/alexruiz-io/"
           target="_blank"
@@ -34,7 +34,7 @@ const Index = () => {
               href="https://www.linkedin.com/in/alexruiz-io/"
               target="_blank"
               rel="noopener noreferrer"
-              className="flex items-center gap-2"
+              className="flex items-center gap-2 cta"
             >
               <Linkedin className="w-5 h-5" />
               <span>Connect on LinkedIn</span>

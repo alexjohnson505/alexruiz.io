@@ -36,6 +36,10 @@
   }
 }
 
+.topnav {
+  border-bottom: 1px solid #888;
+}
+
 .social-link {
   @apply relative inline-flex items-center gap-2 transition-all duration-300 hover:scale-105;
 }
@@ -47,4 +51,15 @@
 
 .social-link:hover::after {
   @apply w-full;
+}
+
+.cta {
+  color: #fff;
+  background: none;
+}
+
+.cta:hover {
+  background: none;
+  opacity: 1;
+  color: #fff;
 }
