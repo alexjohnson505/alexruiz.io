@@ -13,22 +13,22 @@ const Index = () => {
           className="text-white/80 hover:text-white transition-colors flex items-center gap-2"
         >
           <Linkedin className="w-5 h-5" />
-          <span>LinkedIn</span>
         </a>
       </nav>
       
       <div className="flex-1 flex items-center justify-center animate-background-shine p-4">
-        <div className="text-center space-y-6">
+        <div className="text-center space-y-2">
           <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold tracking-tight">
             Alex Ruiz
           </h1>
-          <p className="text-xl sm:text-2xl md:text-3xl text-gray-300">
-            Head of Product
+          <p className="text-xl sm:text-2xl md:text-3xl">
+            Product at LearnLux
           </p>
+          <br/>
           <Button
             variant="outline"
             asChild
-            className="border-2 hover:bg-white/10"
+            className="border-2"
           >
             <a
               href="https://www.linkedin.com/in/alexruiz-io/"

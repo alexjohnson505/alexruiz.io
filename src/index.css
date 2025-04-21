@@ -37,7 +37,7 @@
 }
 
 .topnav {
-  border-bottom: 1px solid #888;
+
 }
 
 .social-link {
@@ -62,4 +62,34 @@
   background: none;
   opacity: 1;
   color: #fff;
+}
+
+h1, p {
+  font-family: "Quattrocento", serif;
+  font-weight: 400;
+  font-style: normal;
+  color: #fff;
+}
+
+h1 {
+  font-weight: 700;
+}
+
+/* https://codepen.io/hylobates-lar/pen/qBbQeON */
+body {
+    background: linear-gradient(-45deg, #001524, #15616d, #ffecd1);
+    background-size: 400% 400%;
+    animation: gradient 15s ease infinite;
+}
+
+@keyframes gradient {
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
 }
