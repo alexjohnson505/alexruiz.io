@@ -1,11 +1,25 @@
-// Update this page (the content is just a fallback if you fail to update the page)
+
+import { Linkedin } from "lucide-react";
 
 const Index = () => {
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gray-100">
-      <div className="text-center">
-        <h1 className="text-4xl font-bold mb-4">Welcome to Your Blank App</h1>
-        <p className="text-xl text-gray-600">Start building your amazing project here!</p>
+    <div className="min-h-screen flex items-center justify-center animate-background-shine p-4">
+      <div className="text-center space-y-6">
+        <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold tracking-tight">
+          Alex Ruiz
+        </h1>
+        <p className="text-xl sm:text-2xl md:text-3xl text-gray-300">
+          Head of Product
+        </p>
+        <a
+          href="https://www.linkedin.com/in/alexruiz-io/"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="social-link"
+        >
+          <Linkedin className="w-6 h-6" />
+          <span>LinkedIn</span>
+        </a>
       </div>
     </div>
   );
