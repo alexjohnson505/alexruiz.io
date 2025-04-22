@@ -83,3 +83,11 @@ Set DNS records (iwantmyname)
 http://alexruiz.io.s3-website-us-west-2.amazonaws.com 
 
 https://docs.aws.amazon.com/AmazonS3/latest/userguide/HostingWebsiteOnS3Setup.html
+
+
+
+npm run build 
+
+upload /dist to S3
+
+Amplify -> created deploy -> from S3
