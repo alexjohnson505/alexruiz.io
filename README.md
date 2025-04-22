@@ -91,3 +91,77 @@ npm run build
 upload /dist to S3
 
 Amplify -> created deploy -> from S3
+
+
+
+
+zsh: command not found: pip
+Py installed?
+
+python3 --version
+pip3 installed?
+pip3 --version
+add alais
+alias pip="pip3"
+reload
+source ~/.zshrc
+
+// 
+pip install awscli --force-reinstall --upgrade
+
+aws configure
+
+// check aiuth
+aws s3 ls
+
+Create group IAM
+add AmplifyBackendDeployFullAccess
+add AmazonS3FullAccess
+Add JSON policy:
+
+```
+{
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Sid": "AllowAmplifyStartDeployment",
+      "Effect": "Allow",
+      "Action": [
+        "amplify:StartDeployment",
+        "amplify:GetApp",
+        "amplify:GetBranch",
+        "amplify:GetJob",
+        "amplify:ListJobs"
+      ],
+      "Resource": [
+        "arn:aws:amplify:us-west-2:351656701692:apps/d7er6ag450hwu",
+        "arn:aws:amplify:us-west-2:351656701692:apps/d7er6ag450hwu/branches/main",
+        "arn:aws:amplify:us-west-2:351656701692:apps/d7er6ag450hwu/branches/main/*"
+      ]
+    }
+  ]
+}
+```
+
+//
+s3-upload group AmazonS3FullAccess
+alexruiz.io user
+
+//
+rm dist/.DS_Store
+
+// delete remote that's not local
+aws s3 sync dist s3://alexruiz.io --delete
+
+aws amplify start-deployment --app-id d7er6ag450hwu --branch-name main --source-url s3://alexruiz.io/build.zip
+
+// check itndidy
+aws sts get-caller-identity        
+
+cd dist
+zip -r ../build-final.zip .
+cd ..
+aws s3 cp build-final.zip s3://your-bucket-name/build.zip
+
+aws amplify start-deployment --app-id d7er6ag450hwu --branch-name main --source-url s3://alexruiz.io/build.zip
+aws amplify get-job --app-id d7er6ag450hwu --branch-name main --job-id #
