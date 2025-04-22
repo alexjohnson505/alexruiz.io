@@ -1,123 +1,83 @@
-# Welcome to your Lovable project
+[alexruiz.io](alexruiz.io)
 
-## Project info
+## Setup & Deploy
 
-**URL**: https://lovable.dev/projects/231fe694-24de-4ae6-874e-cc6ca49975c4
+### Development
 
-## How can I edit this code?
+Install node.js, and npm [with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
 
-There are several ways of editing your application.
+**Install the necessary dependencies.**
+```npm i```
 
-**Use Lovable**
+**Run development server with auto-reloading**
+```npm run dev```
 
-Simply visit the [Lovable Project](https://lovable.dev/projects/231fe694-24de-4ae6-874e-cc6ca49975c4) and start prompting.
+### Deploy
 
-Changes made via Lovable will be committed automatically to this repo.
+**Build to /dist folder**
 
-**Use your preferred IDE**
+```npm run build```
 
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
+**Build .zip for deploy**
 
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
-
-Follow these steps:
-
-```sh
-# Step 1: Clone the repository using the project's Git URL.
-git clone <YOUR_GIT_URL>
-
-# Step 2: Navigate to the project directory.
-cd <YOUR_PROJECT_NAME>
-
-# Step 3: Install the necessary dependencies.
-npm i
-
-# Step 4: Start the development server with auto-reloading and an instant preview.
-npm run dev
+```
+cd dist
+zip -r ../build.zip .
+cd ..
 ```
 
-**Edit a file directly in GitHub**
+**Upload .zip to S3**
+```
+aws s3 cp build.zip s3://your-bucket-name/build.zip
+```
 
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
+**Deploy .zip from S3 with Amplify**
+```
+aws amplify start-deployment --app-id d7er6ag450hwu --branch-name main --source-url s3://alexruiz.io/build.zip
+```
 
-**Use GitHub Codespaces**
+### Setup
 
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
+**Create Amazon S3 Bucket**
 
-## What technologies are used for this project?
+Create new bucket: http://alexruiz.io.s3-website-us-west-2.amazonaws.com 
+Enable static web hosting
 
-This project is built with:
-
-- Vite
-- TypeScript
-- React
-- shadcn-ui
-- Tailwind CSS
-
-## How can I deploy this project?
-
-Simply open [Lovable](https://lovable.dev/projects/231fe694-24de-4ae6-874e-cc6ca49975c4) and click on Share -> Publish.
-
-## Can I connect a custom domain to my Lovable project?
-
-Yes, you can!
-
-To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
-
-Read more here: [Setting up a custom domain](https://docs.lovable.dev/tips-tricks/custom-domain#step-by-step-guide)
-
-
-### Misc. Notes for self:
-
-Create bucket
-Enable static website hosting
-Enable Amplify Hosting
-Set DNS records (iwantmyname)
-
-http://alexruiz.io.s3-website-us-west-2.amazonaws.com 
+**Set Up Amplify Hosting**
 
 https://docs.aws.amazon.com/AmazonS3/latest/userguide/HostingWebsiteOnS3Setup.html
 
+**Set DNS Records**
 
+In iwantmyname
 
-npm run build 
+**Fix locale environment**
 
-upload /dist to S3
-
-Amplify -> created deploy -> from S3
-
-
-
-
-zsh: command not found: pip
-Py installed?
-
+```
+// Is python installed?
 python3 --version
-pip3 installed?
+
+// Is pip4 installed?
 pip3 --version
-add alais
+
+// Use alias for pip -> pip3
 alias pip="pip3"
-reload
+
+// Refresh config
 source ~/.zshrc
+```
 
-// 
+**Install AWS CLI**
+
 pip install awscli --force-reinstall --upgrade
-
 aws configure
-
-// check aiuth
 aws s3 ls
 
-Create group IAM
-add AmplifyBackendDeployFullAccess
-add AmazonS3FullAccess
-Add JSON policy:
+**AWS IAM - Configure Permissions**
+
+Including: AmplifyBackendDeployFullAccess, and AmazonS3FullAccess
+
+Add custom JSON policy:
 
 ```
 {
@@ -143,25 +103,12 @@ Add JSON policy:
 }
 ```
 
-//
-s3-upload group AmazonS3FullAccess
-alexruiz.io user
+**AWS IAM - Add user with group**
 
-//
-rm dist/.DS_Store
+Created new `alexruiz.io` user account
 
-// delete remote that's not local
-aws s3 sync dist s3://alexruiz.io --delete
+**Check Identity**
 
-aws amplify start-deployment --app-id d7er6ag450hwu --branch-name main --source-url s3://alexruiz.io/build.zip
-
-// check itndidy
-aws sts get-caller-identity        
-
-cd dist
-zip -r ../build-final.zip .
-cd ..
-aws s3 cp build-final.zip s3://your-bucket-name/build.zip
-
-aws amplify start-deployment --app-id d7er6ag450hwu --branch-name main --source-url s3://alexruiz.io/build.zip
-aws amplify get-job --app-id d7er6ag450hwu --branch-name main --job-id #
+```
+aws sts get-caller-identity
+```
