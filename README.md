@@ -7,9 +7,11 @@
 Install node.js, and npm [with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
 
 **Install the necessary dependencies.**
+
 ```npm i```
 
 **Run development server with auto-reloading**
+
 ```npm run dev```
 
 ### Deploy
@@ -28,7 +30,7 @@ cd ..
 
 **Upload .zip to S3**
 ```
-aws s3 cp build.zip s3://your-bucket-name/build.zip
+aws s3 cp build.zip s3://alexruiz.io/build.zip
 ```
 
 **Deploy .zip from S3 with Amplify**
@@ -41,6 +43,7 @@ aws amplify start-deployment --app-id d7er6ag450hwu --branch-name main --source-
 **Create Amazon S3 Bucket**
 
 Create new bucket: http://alexruiz.io.s3-website-us-west-2.amazonaws.com 
+
 Enable static web hosting
 
 **Set Up Amplify Hosting**
@@ -69,9 +72,11 @@ source ~/.zshrc
 
 **Install AWS CLI**
 
+```
 pip install awscli --force-reinstall --upgrade
 aws configure
 aws s3 ls
+```
 
 **AWS IAM - Configure Permissions**
 
